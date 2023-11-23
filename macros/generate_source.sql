@@ -46,7 +46,7 @@
 {% for table in tables %}
     {% do sources_yaml.append('      - name: ' ~ table | lower ) %}
     {% if include_descriptions %}
-        {% do sources_yaml.append('        description: ""' ) %}
+        {% do sources_yaml.append('        description: |\n          <INSERT DESCRIPTION>' ) %}
     {% endif %}
     {% if generate_columns %}
     {% do sources_yaml.append('        columns:') %}
@@ -65,10 +65,9 @@
                 {% do sources_yaml.append('            data_type: ' ~ codegen.data_type_format_source(column)) %}
             {% endif %}
             {% if include_descriptions %}
-                {% do sources_yaml.append('            description: ""' ) %}
+                {% do sources_yaml.append('            description: |\n              <INSERT DESCRIPTION>' ) %}
             {% endif %}
         {% endfor %}
-            {% do sources_yaml.append('') %}
 
     {% endif %}
 
